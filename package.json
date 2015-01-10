@@ -1,7 +1,7 @@
 {
   "name": "global-stats",
   "version": "1.0.0",
-  "description": "A simple API for creating URLs that query the StatCounter Global Stats database.",
+  "description": "A simple module that generates URLs to query the StatCounter Global Stats database.",
   "main": "index.js",
   "scripts": {
     "test": "tape test.js"
