@@ -1,9 +1,6 @@
 var xtend = require('xtend')
 var qs = require('querystring')
-
 var granularities = require('./lib/granularity-patterns')
-var platforms = require('./platforms')
-var stats = require('./stats')
 
 var base = 'http://gs.statcounter.com/chart.php'
 
