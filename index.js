@@ -7,7 +7,7 @@ var base = 'http://gs.statcounter.com/chart.php'
 module.exports = function (options) {
   options = xtend({
     stat: 'browser',
-    platforms: 'desktop',
+    platforms: ['desktop'],
     country: 'ww',
     start: '2008',
     end: String(new Date().getFullYear())
