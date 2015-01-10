@@ -20,11 +20,6 @@ module.exports = function (options) {
     options.platforms = [options.platforms]
   }
   
-  options.platforms = options.platforms
-    .filter(function (platform) {
-      return ~platforms.indexOf(platform)
-    })
-
   var granularity
   var pattern
   var query = {
