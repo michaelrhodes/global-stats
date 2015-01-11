@@ -1,32 +1,23 @@
-var xtend = require('xtend')
 var qs = require('querystring')
 var granularities = require('./lib/granularity-patterns')
 
 var base = 'http://gs.statcounter.com/chart.php'
 
 module.exports = function (options) {
-  options = xtend({
-    stat: 'browser',
-    platforms: ['desktop'],
-    country: 'ww',
-    start: '2008',
-    end: String(new Date().getFullYear())
-  }, options)
-
   if (!Array.isArray(options.platforms)) {
     options.platforms = [options.platforms]
   }
-  
-  var granularity
-  var pattern
+   
   var query = {
     'device_hidden': options.platforms.join('+'),
     'statType_hidden': options.stat,
-    'region_hidden': options.country,
+    'region_hidden': options.country || 'ww',
     'multi-device': true,
     'csv': 1
   }
 
+  var granularity
+  var pattern
   for (var type in granularities) {
     if (!granularities.hasOwnProperty(type)) {
       continue
