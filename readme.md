@@ -98,5 +98,21 @@ global-stats ({
 })
 ```
 
+### Miscellaneous
+Beyond enforcing required options and ensuring consistent date formatting, `global-stats` makes no attempt to validate query parameters. Therefore, your application needs to check its own date ranges and country codes. That said, `global-stats` does provide two arrays that list valid stat types and platforms. These can be consumed like so:
+
+```js
+var gs = require('global-stats')
+var stats = require('global-stats/stats')
+var platforms = require('global-stats/platforms')
+
+var url = gs({
+  stat: stats[0],
+  platforms: platforms.slice(1, 3),
+  start: '2008',
+  end: '2015'
+})
+```
+
 ### License
 [MIT](http://opensource.org/licenses/MIT)
