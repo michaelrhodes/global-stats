@@ -6,7 +6,7 @@ module.exports = (function () {
   g.yearly = /^([0-9]{4})/
   g.monthly = concat(g.yearly, /-([0-1][0-9])/)
   g.daily = concat(g.monthly, /-([0-3][0-9])/)
-  g.quarterly = concat(g.yearly, /-(Q[1-4])/)
+  g.quarterly = concat(g.yearly, /-Q0?([1-4])/)
   g.weekly = concat(g.yearly, /-W([0-5][0-9])/)
 
   for (var type in g) {

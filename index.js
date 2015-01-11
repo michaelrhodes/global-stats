@@ -69,6 +69,8 @@ module.exports = function (options) {
   }
 
   else if (/quarterly/.test(granularity)) {
+    from[2] = '0' + from[2]
+    to[2] = '0' + to[2]
     query.fromQuarterYear = from.join('-')
     query.toQuarterYear = to.join('-')
   }
