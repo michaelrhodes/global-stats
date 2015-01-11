@@ -28,7 +28,9 @@
     "hyperquest": "^1.0.1",
     "csv-parser": "^1.5.0",
     "JSONStream": "^0.10.0",
+    "concat-stream": "^1.4.7",
     "object.omit": "^0.2.1",
+    "run-series": "^1.0.2",
     "shallow-copy": "0.0.1",
     "tape": "^3.0.3"
   }
