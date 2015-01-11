@@ -1,9 +1,12 @@
 var qs = require('querystring')
 var granularities = require('./lib/granularity-patterns')
+var validate = require('./lib/validate')
 
 var base = 'http://gs.statcounter.com/chart.php'
 
 module.exports = function (options) {
+  validate(options)
+
   if (!Array.isArray(options.platforms)) {
     options.platforms = [options.platforms]
   }
@@ -38,7 +41,7 @@ module.exports = function (options) {
   var to = options.end.match(pattern)
 
   if (!to) {
-    throw new Error('Inconsistently formatted dates')
+    throw new Error('Inconsistent date formatting')
   }
 
   query.granularity = granularity
