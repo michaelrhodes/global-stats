@@ -1,11 +1,15 @@
+var gs = require('./')
 var hyperquest = require('hyperquest')
 var parse = require('csv-parser')
 var JSON = require('JSONStream')
-var gs = require('./')
 
 var url = gs({
   stat: 'browser',
-  platforms: 'desktop',
+  platforms: [
+    'desktop',
+    'tablet',
+    'mobile'
+  ],
   country: 'AU',
   start: '2015',
   end: '2015'
