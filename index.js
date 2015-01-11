@@ -1,5 +1,5 @@
 var qs = require('querystring')
-var granularities = require('./lib/granularity-patterns')
+var granularities = require('./granularities')
 var validate = require('./lib/validate')
 
 var base = 'http://gs.statcounter.com/chart.php'

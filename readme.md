@@ -99,19 +99,31 @@ global-stats ({
 ```
 
 ### Miscellaneous
-Beyond enforcing required options and ensuring consistent date formatting, `global-stats` makes no attempt to validate query parameters. Therefore, your application needs to check its own date ranges and country codes. That said, `global-stats` does provide two arrays that list valid stat types and platforms. These can be consumed like so:
+Beyond enforcing required options and ensuring consistent date formatting, `global-stats` makes no attempt to validate query parameters. Therefore, your application needs to check its own date ranges and country codes. That said, `global-stats` does provide lists of valid stat types, platforms, and granularity regular expressions. These can be consumed like so:
 
 ```js
 var gs = require('global-stats')
 var stats = require('global-stats/stats')
 var platforms = require('global-stats/platforms')
+var granularities = require('global-stats/granularities')
+var yearly = granularities.yearly
+
+var start = '2008'
+var end = '2015'
+
+if (!yearly.test(start) || !yearly.test(end)) {
+  throw new Error('Bad dates') 
+}
 
 var url = gs({
   stat: stats[0],
   platforms: platforms.slice(1, 3),
-  start: '2008',
-  end: '2015'
+  start: start,
+  end: end
 })
+
+console.log(url)
+> http://gs.statcounter.com/chart.php?device_hidden=mobile%2Btablet&statType_hidden=browser&region_hidden=ww&multi-device=true&csv=1&granularity=yearly&fromYear=2008&toYear=2015
 ```
 
 ### License
