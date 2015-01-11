@@ -102,6 +102,43 @@ test('start and end dates to be of the same granularity', function (assert) {
   })
 })
 
+test('granularities translate to correct query params', function (assert) {
+  var dates = {
+    'daily': { start: '2009-12-01', end: '2013-12-01' },
+    'weekly': { start: '2013-W48', end: '2013-W52' },
+    'monthly': { start: '2013-01', end: '2013-12' },
+    'quarterly': { start: '2012-Q3', end: '2013-Q2' },
+    'yearly': { start: '2008', end: '2015' }
+  }
+
+  var params = {
+    'daily': ['fromMonthYear', 'fromDay', 'toMonthYear', 'toDay'],
+    'weekly': ['fromWeekYear', 'toWeekYear'],
+    'monthly': ['fromMonthYear', 'toMonthYear'],
+    'quarterly': ['fromQuarterYear', 'toQuarterYear'],
+    'yearly': ['fromYear', 'toYear']
+  }
+
+  var granularities = Object.keys(dates)
+  assert.plan(granularities.length)
+
+  granularities.forEach(function (granularity) {
+    var options = omit(defaults, ['start', 'end'])
+    options.start = dates[granularity].start
+    options.end = dates[granularity].end
+
+    var result = query(options)
+
+    params[granularity].forEach(function (param) {
+      if (!result.hasOwnProperty(param)) {
+        assert.ok(false, 'missing param')
+      }
+    })
+    
+    assert.ok(true, 'has correct params')
+  })
+})
+
 test('country defaults to worldwide', function (assert) {
   assert.plan(2)
   assert.equal(query(defaults).region_hidden, 'ww')
