@@ -59,6 +59,15 @@ test('options.platforms accepts a string', function (assert) {
   assert.equal(query(options).device_hidden, 'desktop')
 })
 
+test('options.bar accepts a truthy', function (assert) {
+  assert.plan(1)
+
+  var options = defaults
+  options.bar = true
+  assert.equal(query(options).bar, '1')
+})
+
+
 test('infer granularity from options.start', function (assert) {
   var dates = {
     'daily': '2013-12-01',

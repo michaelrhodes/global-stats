@@ -19,6 +19,10 @@ module.exports = function (options) {
     'csv': 1
   }
 
+  if (options.bar) {
+    query.bar = 1
+  }
+
   var granularity
   var pattern
   for (var type in granularities) {

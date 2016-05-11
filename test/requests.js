@@ -34,6 +34,12 @@ test('urls return expected data', function (assert) {
     platforms: ['mobile', 'tablet'],
     start: '2014-12-12',
     end: '2015-01-09'
+  },{
+    stat: 'resolution',
+    platforms: ['mobile', 'tablet'],
+    start: '2014-12',
+    end: '2015-01',
+    bar: true
   }]
 
   var tests = []
